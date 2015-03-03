@@ -4,7 +4,7 @@
 
 The program EncodeText performs Huffman coding (commonly used in data compression) of text from a sample input file. A GUI displaying the Huffman tree is created, with the option of displaying the Huffman coding of entered words. More information on Huffman coding can be found [here](https://en.wikipedia.org/wiki/Huffman_coding).
 
-In short, Huffman coding creates a binary encoding of characters in a sample file, with smaller coded values for characters that are used more frequently in the sample to be encoded. To interpret the encoding created by this sample, follow the binary tree: starting at the root, go left for every '0' and right for every '1'. Record the character and return to the root once a leaf node is reached.
+In short, Huffman coding creates a binary encoding of characters (in our case, from a sample file), with smaller coded values for characters that are used more frequently in the sample to be encoded. To interpret the encoding created by this sample, follow the binary tree: starting at the root, go left for every '0' and right for every '1'. Record the character and return to the root once a leaf node is reached.
 
 Also note that the sample file to be encoded provided in this repo, test1.txt, contains the alphabet and some punctuation. Some characters are repeated to make a more intesting Huffman tree. However, this code is able to create a Huffman tree for any input file.
 
