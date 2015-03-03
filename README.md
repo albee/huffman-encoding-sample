@@ -1,6 +1,11 @@
-#huffman_encoding_sample
+# huffman_encoding_sample
+## Code Explanation
 
-####Main program: Problem1
+
+
+## Contents of Repo
+
+#### Main Program: EncodeText
 To run: Run Problem1 from the command line with a single text file as an argument (e.g. Problem1 test1.txt)
 
 ####Problem1:
