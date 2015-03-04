@@ -2,7 +2,8 @@
 ##Usage
 ####Main Program: MakeHuffCode
 To get going, run MakeHuffCode from the command line with a single text file as an argument, forexample:
-                            java MakeHuffCode test1.txt)
+
+                            java MakeHuffCode test1.txt
 
 ##Code Explanation
 
