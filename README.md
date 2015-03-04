@@ -2,18 +2,20 @@
 
 ##Code Explanation
 
-The program EncodeText performs Huffman coding (commonly used in data compression) of text from a sample input file. A GUI displaying the Huffman tree is created, with the option of displaying the Huffman coding of entered words. More information on Huffman coding can be found [here](https://en.wikipedia.org/wiki/Huffman_coding).
+The program MakeHuffCode performs Huffman coding (commonly used in data compression) of text from a sample input file. A GUI displaying the Huffman tree is created, with the option of displaying the Huffman coding of entered words ("encode"), or decoding binary entries into characters ("decode"). More information on Huffman coding can be found [here](https://en.wikipedia.org/wiki/Huffman_coding).
 
-In short, Huffman coding creates a binary encoding of characters (in our case, from a sample file), with smaller coded values for characters that are used more frequently in the sample. To interpret the encoding created by this sample, follow the binary tree: starting at the root, go left for every '0' and right for every '1'. Once a leaf node is reached, record the character and return to the root.
+In short, Huffman coding creates a binary encoding of characters (in our case, from a sample file), with shorter binary values for characters that are used more frequently in the sample. To interpret the encoding created by this sample, follow the binary tree: starting at the root, go left for every '0' and right for every '1'. Once a leaf node is reached, record the character, return to the root, and repeat.
 
-Also note that the sample file to be encoded provided in this repo, test1.txt, contains the alphabet and some punctuation. Some characters are repeated to make a more intesting Huffman tree. However, this code is able to create a Huffman tree for any input file.
+Also note that the sample file provided in this repo, test1.txt, contains the alphabet and some punctuation. Some characters are repeated to make a more intesting Huffman tree. However, this code is able to create a Huffman tree for any input file.
 
 ##Contents of Repo
 
-####Main Program: EncodeText
-To run: Run Problem1 from the command line with a single text file as an argument (e.g. Problem1 test1.txt)
+NOTE: Data structures used are written by Mark Allen Weiss.
 
-####Problem1:
+####Main Program: EncodeText
+To run: Run MakeHuffCode from the command line with a single text file as an argument (e.g. java MakeHuffCode test1.txt)
+
+####MakeHuffCode:
 Contains main. Constructs a Huffman tree using BinaryTree by bundling information in HuffNode. BinaryHeap is used for queuing. (These classes have been made non-generic.)
 
 Gets a map of Huffman encodings for characters and another for in-between node points.
