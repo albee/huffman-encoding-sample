@@ -70,8 +70,8 @@ public class MakeHuffCode{
 			encodings = completeTree.getRoot().getHuffman(completeTree.size());
 			treeMap = completeTree.getRoot().getTree(completeTree.size());
 			System.out.println(encodings);
-               makeGUI(); //display the Huffman tree
-          }	
+        		makeGUI(); //display the Huffman tree
+          	}	
 		else
 			System.out.println("Please provide an input file as a command line argument.");
 	}
