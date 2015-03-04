@@ -1,6 +1,6 @@
 //Keenan Albee
-//kea2134
-//11/26/14
+//3/3/2015
+//Huffman Node, containing a character, its frequency, and an indicator stating whether the node is valid
 
 public class HuffNode implements Comparable<HuffNode> {
 	public String theChar;

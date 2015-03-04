@@ -1,6 +1,5 @@
 //Keenan Albee
-//kea2134
-//11/26/14
+//Draws the huffman nodes
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -16,7 +15,6 @@ public class DisplayHuff extends JComponent{
 	}
 	
 	public void paintComponent(Graphics g) {
-		//create your tree here
 		Graphics2D g2 = (Graphics2D)g;
 		for (NodeShape each : theNodes){
 			each.draw(g2);

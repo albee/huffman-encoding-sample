@@ -46,7 +46,7 @@ public class Listener implements ActionListener {
                     if (encodings.get(Character.toString(tmp)) == null){
      			     System.out.println("Invalid character entered.");
           			return "Invalid character entered. Make sure characters entered are" +
-                             " in the Huffman tree.";
+                             " in the Huffman tree--case matters.";
                     }
      			out += encodings.get(Character.toString(tmp));
                }
@@ -70,7 +70,7 @@ public class Listener implements ActionListener {
      		}
                else{
                     System.out.println("Invalid enconding entry.");
-                    return "Invalid encoding entry. Encoding must be in binary!";
+                    return "Invalid Huffman code entry. Entry must be in binary to decode!";
                }
      		if (currentRoot.getElement().isValid == 1){
      			if (currentRoot.getElement().theChar == "sp") //account for spaces

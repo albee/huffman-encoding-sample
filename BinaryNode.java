@@ -1,6 +1,6 @@
 //Keenan Albee
-//kea2134
-//11/26/14
+//3/3/15
+//NOTE: BinaryNode class written by Mark Allen Weiss, modified by Keenan Albee
 
 import java.util.HashMap;
 

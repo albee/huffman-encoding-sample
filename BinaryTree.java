@@ -1,6 +1,6 @@
 //Keenan Albee
-//kea2134
-//11/26/14
+//3/3/15
+//NOTE: BinaryTree class written by Mark Allen Weiss
 
 //BinaryTree class; stores a binary tree.
 //
