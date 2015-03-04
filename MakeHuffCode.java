@@ -36,7 +36,7 @@ public class MakeHuffCode{
 		int readTemp;
 		String keyVal = null;
 		HuffNode tmp;
-          BinaryHeap MyHeap = new BinaryHeap(CAP);
+		BinaryHeap MyHeap = new BinaryHeap(CAP);
 		
 		if (args.length==1){
 			inFile = new File(args[0]);
@@ -64,140 +64,138 @@ public class MakeHuffCode{
 					map.put(keyVal, tmp);
 				}
 			}
-               MyHeap = makeHeap(map); //make the heap of Huffman nodes	
-		     completeTree = makeTree(MyHeap); //make the final Huffman tree	
-
+			MyHeap = makeHeap(map); //make the heap of Huffman nodes	
+			completeTree = makeTree(MyHeap); //make the final Huffman tree	
 			//print out the Huffman encondings map to terminal
 			encodings = completeTree.getRoot().getHuffman(completeTree.size());
 			treeMap = completeTree.getRoot().getTree(completeTree.size());
 			System.out.println(encodings);
-			
                makeGUI(); //display the Huffman tree
           }	
 		else
 			System.out.println("Please provide an input file as a command line argument.");
 	}
 
-     static BinaryHeap makeHeap(HashMap<String,HuffNode> theMap) throws Overflow{
-          //create binary heap queue of 1-node Huffman trees
-          BinaryTree HuffTree = new BinaryTree();
+	static BinaryHeap makeHeap(HashMap<String,HuffNode> theMap) throws Overflow{
+        	//create binary heap queue of 1-node Huffman trees
+		BinaryTree HuffTree = new BinaryTree();
 		BinaryHeap MyHeap = new BinaryHeap( CAP );
 		for (Map.Entry<String,HuffNode> entry : theMap.entrySet()) {
-			  HuffNode value = entry.getValue();
-			  HuffTree = new BinaryTree(value);
-			  MyHeap.insert(HuffTree);
-		} 
-          return MyHeap;
-     }
+			HuffNode value = entry.getValue();
+			HuffTree = new BinaryTree(value);
+			MyHeap.insert(HuffTree);
+		}
+		return MyHeap;
+		
+	}
 
 	static BinaryTree makeTree(BinaryHeap MyHeap) throws Overflow{
-          //create final Huffman tree
+	//create final Huffman tree
 		int cntr = 0;
-          BinaryTree finishedTree = new BinaryTree();
+        	BinaryTree finishedTree = new BinaryTree();
 		HuffNode tmp;
 		for (; ;){
 			BinaryTree num1 = MyHeap.deleteMin(); //set the smaller element as the left
 			BinaryTree num2 = MyHeap.deleteMin();
 			//creates a filler huffNode
 			tmp = new HuffNode("T"+ Integer.toString(++cntr),
-                     num1.getRoot().getElement().theFreq + num2.getRoot().getElement().theFreq,0);
+                	num1.getRoot().getElement().theFreq + num2.getRoot().getElement().theFreq,0);
 			//merge the trees around the new Huffman root node
 			num1.merge(tmp,num1,num2);
 			if (MyHeap.isEmpty()){
-			     finishedTree = num1;
+				finishedTree = num1;
 				break;
 			}
 			else
 				MyHeap.insert(num1);
-     	}
-          return finishedTree;
-     }
-     
-     static void makeGUI(){
-	    //display the tree as a gui
-	    ArrayList<NodeShape> myNodes = new ArrayList<NodeShape>();
-	    int panelWidth;
-	    int panelHeight;
-	    final int SPACING = 55; //minumum spacing b/n nodes (decreases if very wide)
+     		}
+        	return finishedTree;
+	}
+	
+	static void makeGUI(){
+		//display the tree as a gui
+		ArrayList<NodeShape> myNodes = new ArrayList<NodeShape>();
+		int panelWidth;
+		int panelHeight;
+		final int SPACING = 55; //minumum spacing b/n nodes (decreases if very wide)
 
-	    panelHeight = (completeTree.height()+1)*100;
-	    panelWidth = (int) ((Math.pow(2,completeTree.height()) - 1)*SPACING);
-	    if (panelWidth > 3000){
-	    	panelWidth = 3000;
-	    }	    
-
-         myNodes = getNodes(panelWidth, panelHeight, SPACING);	
-	    packageGUI(panelWidth, panelHeight, myNodes); 
+		panelHeight = (completeTree.height()+1)*100;
+		panelWidth = (int) ((Math.pow(2,completeTree.height()) - 1)*SPACING);
+		if (panelWidth > 3000){
+			panelWidth = 3000;
+		}	    
+		myNodes = getNodes(panelWidth, panelHeight, SPACING);	
+		packageGUI(panelWidth, panelHeight, myNodes); 
 	}
 
-     static ArrayList<NodeShape> getNodes(int panelWidth, int panelHeight, int spacing){
-         //create the huffman nodes at the proper coordinates
-         int x;
-	    int y;
-	    double tmpVal;
-	    double tmpX;
-	    int totalHeight = completeTree.height();
-	    int prevX;
-         int prevY; 
-	    ArrayList<NodeShape> myNodes = new ArrayList<NodeShape>();
-	    NodeShape myNode;
+	static ArrayList<NodeShape> getNodes(int panelWidth, int panelHeight, int spacing){
+ 		//create the huffman nodes at the proper coordinate
+		int x;
+		int y;
+		double tmpVal;
+		double tmpX;
+		int totalHeight = completeTree.height();
+		int prevX;
+		int prevY; 
+		ArrayList<NodeShape> myNodes = new ArrayList<NodeShape>();
+		NodeShape myNode;
 	    
-	    prevX = panelWidth/2;
-	    prevY = 0;
-	    Iterator<Map.Entry<String,String>> it = treeMap.entrySet().iterator();
-	    while (it.hasNext() ){
-               Map.Entry<String,String> pairs = (Map.Entry<String,String>)it.next();
-          	tmpX = panelWidth / 2;
-	          for (int i = 0; i < pairs.getValue().length(); i++){
-               //tmpVal is the character at i (0 or 1). i is the height - 1
-	          	tmpVal = (double) pairs.getValue().charAt(i) - 48; 
-	          	if (tmpVal == 0)
-	          		tmpVal = -1;
-	          	prevX = (int) tmpX;
-	          	tmpX = tmpX + panelWidth* Math.pow(.5,i+2) * tmpVal;
-	          }
-	          x = (int) tmpX;
-	          y = (pairs.getValue().length()) * 100;
-	          prevY = y - 100;
-	          if( pairs.getValue().length() == 0){ //root node
-	          	prevX = panelWidth/2;
-	          	prevY = 0;
-	          }
-	          myNode = new NodeShape(prevX,prevY,x,y,pairs.getKey(),pairs.getValue());
-	          myNodes.add(myNode);
-	          it.remove();
-	    }
-         return myNodes;
-     }
+		prevX = panelWidth/2;
+		prevY = 0;
+		Iterator<Map.Entry<String,String>> it = treeMap.entrySet().iterator();
+		while (it.hasNext() ){
+			Map.Entry<String,String> pairs = (Map.Entry<String,String>)it.next();
+			tmpX = panelWidth / 2;
+			for (int i = 0; i < pairs.getValue().length(); i++){
+				//tmpVal is the character at i (0 or 1). i is the height - 1
+				tmpVal = (double) pairs.getValue().charAt(i) - 48; 
+				if (tmpVal == 0)
+					tmpVal = -1;
+				prevX = (int) tmpX;
+				tmpX = tmpX + panelWidth* Math.pow(.5,i+2) * tmpVal;
+			}
+			x = (int) tmpX;
+			y = (pairs.getValue().length()) * 100;
+			prevY = y - 100;
+			if( pairs.getValue().length() == 0){ //root node
+				prevX = panelWidth/2;
+				prevY = 0;
+			}
+			myNode = new NodeShape(prevX,prevY,x,y,pairs.getKey(),pairs.getValue());
+			myNodes.add(myNode);
+			it.remove();
+		}
+        	return myNodes;
+	}
 
-     static void packageGUI(int panelWidth, int panelHeight, ArrayList<NodeShape> myNodes){
-         //initialize various GUI elements, draw
-         JFrame frame = new JFrame();
-         JPanel panel = new JPanel();
-         JButton encode = new JButton("encode");
-         JButton decode = new JButton("decode");
-         JTextField textField = new JTextField(20);
-         JScrollPane mcScroll = null;
-	    DisplayHuff mc = new DisplayHuff(myNodes,panelHeight,panelWidth);
-	    mcScroll = new JScrollPane(mc);
-	    
-	    textField.setText("Enter your decodin' or encodin' things here.");
-	    
-	    //add listeners for the action buttons
-	    encode.addActionListener(new Listener(encodings,completeTree, textField, 0));
-	    decode.addActionListener(new Listener(encodings,completeTree, textField, 1));
-	    
-	    frame.setLayout(new BorderLayout());
-	    frame.add(textField,BorderLayout.NORTH);
-         frame.add(mcScroll,BorderLayout.SOUTH);
-         frame.add(panel,BorderLayout.CENTER);
-         
-         panel.setLayout(new FlowLayout());
-         panel.add(encode);
-         panel.add(decode);
-         
-         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-         frame.pack();
-         frame.setVisible(true);
-     } 
+	static void packageGUI(int panelWidth, int panelHeight, ArrayList<NodeShape> myNodes){
+		//initialize various GUI elements, draw
+		JFrame frame = new JFrame();
+		JPanel panel = new JPanel();
+		JButton encode = new JButton("encode");
+		JButton decode = new JButton("decode");
+		JTextField textField = new JTextField(20);
+		JScrollPane mcScroll = null;
+		DisplayHuff mc = new DisplayHuff(myNodes,panelHeight,panelWidth);
+		mcScroll = new JScrollPane(mc);
+		
+		textField.setText("Enter text for encoding, or binary for decoding.");
+		
+		//add listeners for the action buttons
+		encode.addActionListener(new Listener(encodings,completeTree, textField, 0));
+		decode.addActionListener(new Listener(encodings,completeTree, textField, 1));
+		
+		frame.setLayout(new BorderLayout());
+		frame.add(textField,BorderLayout.NORTH);
+		frame.add(mcScroll,BorderLayout.SOUTH);
+		frame.add(panel,BorderLayout.CENTER);
+		
+		panel.setLayout(new FlowLayout());
+		panel.add(encode);
+		panel.add(decode);
+		
+		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.pack();
+		frame.setVisible(true);
+	} 
 }
