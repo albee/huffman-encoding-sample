@@ -5,7 +5,7 @@ To get going, run MakeHuffCode from the command line with a single text file as 
 
                                             java MakeHuffCode test1.txt
 
-The text file must contain the characters you wish to use in your Huffman coding. (test1.txt contains the alphabet and some punctuation.)
+The text file must contain the characters you wish to use in your Huffman coding (test1.txt contains the alphabet and some punctuation.)
 
 The Huffman tree will be displayed, along with an encoding/decoding box. The character:encoding pairs will be printed to the terminal.
 
