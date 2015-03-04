@@ -3,5 +3,4 @@
 //Exception required by Weiss' default code.
 
 public class Overflow extends Exception {
-
 }
