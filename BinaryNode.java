@@ -1,6 +1,6 @@
+//NOTE: This class was written by Mark Allen Weiss, and modified by Keenan Albee
 //Keenan Albee
 //3/3/15
-//NOTE: BinaryNode class written by Mark Allen Weiss, modified by Keenan Albee
 
 import java.util.HashMap;
 
