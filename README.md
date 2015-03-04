@@ -1,4 +1,8 @@
 # huffman_encoding_sample
+##Usage
+####Main Program: MakeHuffCode
+To get going, run MakeHuffCode from the command line with a single text file as an argument, forexample:
+                            java MakeHuffCode test1.txt)
 
 ##Code Explanation
 
@@ -11,9 +15,6 @@ Also note that the sample file provided in this repo, test1.txt, contains the al
 ##Contents of Repo
 
 NOTE: Data structures used are written by Mark Allen Weiss.
-
-####Main Program: MakeHuffCode
-To run: Run MakeHuffCode from the command line with a single text file as an argument (e.g. java MakeHuffCode test1.txt)
 
 ####MakeHuffCode:
 Contains main. Constructs a Huffman tree using BinaryTree by bundling information in HuffNode. BinaryHeap is used for queuing. (These classes have been made non-generic.)
