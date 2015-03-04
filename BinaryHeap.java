@@ -1,6 +1,6 @@
 //Keenan Albee
 //3/3/15
-//NOTE: Binary heap code written by Mark Allen Weiss
+//NOTE: Binary heap class written by Mark Allen Weiss
 
     // BinaryHeap class
     //
