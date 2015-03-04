@@ -1,6 +1,6 @@
+//NOTE: This class was written by Mark Allen Weiss
 //Keenan Albee
 //3/3/15
-//NOTE: BinaryTree class written by Mark Allen Weiss
 
 //BinaryTree class; stores a binary tree.
 //
