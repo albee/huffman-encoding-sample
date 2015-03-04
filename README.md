@@ -1,9 +1,11 @@
 # huffman_encoding_sample
 ##Usage
 ####Main Program: MakeHuffCode
-To get going, run MakeHuffCode from the command line with a single text file as an argument, forexample:
+To get going, run MakeHuffCode from the command line with a single text file as an argument, for example:
 
                                             java MakeHuffCode test1.txt
+
+The text file must contain the characters you wish to use in your Huffman coding.
 
 ##Code Explanation
 
