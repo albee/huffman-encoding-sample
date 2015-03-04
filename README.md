@@ -12,7 +12,7 @@ Also note that the sample file provided in this repo, test1.txt, contains the al
 
 NOTE: Data structures used are written by Mark Allen Weiss.
 
-####Main Program: EncodeText
+####Main Program: MakeHuffCode
 To run: Run MakeHuffCode from the command line with a single text file as an argument (e.g. java MakeHuffCode test1.txt)
 
 ####MakeHuffCode:
